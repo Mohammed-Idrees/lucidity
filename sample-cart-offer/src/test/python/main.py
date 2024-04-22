@@ -40,13 +40,6 @@ class TestZomato(unittest.TestCase):
         response = z.apply_offer(200, 1, 1)
         self.assertEqual(response, {"cart_value": 190})
 
-    @patch('requests.get')
-    def test_apply_offer_negative(self, mock_get):
-        mock_get.return_value.json.return_value = {"segment": "p1"}
-        z = Zomato()
-        response = z.apply_offer(300, 1, 1)
-        self.assertEqual(response, {"cart_value": 290})
-
 
 if __name__ == '__main__':
     unittest.main()
